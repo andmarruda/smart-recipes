@@ -28,10 +28,10 @@ def execute():
         return error("Please send your recepie picture in jpg, png or webp.")
 
     processedImage = processImage(file, LANG_MAP[lang])
-    if not processedImage.success:
-        return error(processedImage.error)
+    if not processedImage["success"]:
+        return error(processedImage["error"])
 
-    processedNlp = processNlp(processedImage.text)
+    processedNlp = processNlp(processedImage["text"], LANG_MAP[lang])
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
