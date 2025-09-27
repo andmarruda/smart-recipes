@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from dotenv import load_dotenv
-import processImage from src/ocr
-import processNlp from src/nlp
+from src.ocr import processImage
+from src.nlp import processNlp
 
 load_dotenv()
 app = Flask(__name__)

@@ -1,4 +1,4 @@
-from src/prompt import portuguesePrompt, englishPrompt
+from src.prompt import portuguesePrompt, englishPrompt
 from llama_cpp import Llama
 import os
 
