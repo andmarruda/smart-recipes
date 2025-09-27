@@ -1,6 +1,9 @@
 from flask import Flask, request, jsonify
+from dotenv import load_dotenv
 import processImage from src/ocr
+import processNlp from src/nlp
 
+load_dotenv()
 app = Flask(__name__)
 app.config["MAX_CONTENT_LENGTH"] = 10485760
 
@@ -27,6 +30,8 @@ def execute():
     processedImage = processImage(file, LANG_MAP[lang])
     if not processedImage.success:
         return error(processedImage.error)
+
+    processedNlp = processNlp(processedImage.text)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
