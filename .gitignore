@@ -2,3 +2,4 @@
 src/models/*.gguf
 src/models/*.llamafile
 __pycache__
+README.md
