@@ -3,3 +3,4 @@ Pillow
 flask
 llama-cpp-python
 python-dotenv
+huggingface_hub

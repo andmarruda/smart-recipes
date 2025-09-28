@@ -23,19 +23,19 @@ RUN CMAKE_ARGS="-DLLAMA_BLAS=ON -DLLAMA_BLAS_VENDOR=OpenBLAS" \
     python3 -m pip install --force-reinstall --upgrade --no-cache-dir -r /app/requirements.txt
 
 # Copy project files
-COPY . .
+COPY . /app
 
 # Clean up requirements copy inside the container
 RUN rm -f /app/config/requirements.txt
 
 # Download model if it does not exist
 RUN set -eux; \
-    mkdir -p /app/models; \
-    if [ ! -f /app/models/qwen2.5-0.5b-instruct-q4_k_m.llamafile ]; then \
+    mkdir -p /app/src/models; \
+    if [ ! -f /app/src/models/qwen2.5-coder-7b-instruct-q4_k_m.gguf ]; then \
       curl -L \
-        "https://huggingface.co/Bojun-Feng/Qwen2.5-0.5B-Instruct-GGUF-llamafile/resolve/main/qwen2.5-0.5b-instruct-q4_k_m.llamafile" \
-        -o /app/models/qwen2.5-0.5b-instruct-q4_k_m.llamafile; \
-      chmod +x /app/models/qwen2.5-0.5b-instruct-q4_k_m.llamafile; \
+        "https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct-GGUF/resolve/main/qwen2.5-coder-7b-instruct-q4_k_m.gguf?download=true" \
+        -o /app/src/models/qwen2.5-coder-7b-instruct-q4_k_m.gguf; \
+      chmod +x /app/src/models/qwen2.5-coder-7b-instruct-q4_k_m.gguf; \
     fi
 
 

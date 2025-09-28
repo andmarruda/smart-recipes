@@ -32,6 +32,7 @@ def execute():
         return error(processedImage["error"])
 
     processedNlp = processNlp(processedImage["text"], LANG_MAP[lang])
+    return {"npl": processedNlp, "ocr": processedImage}, 200
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)

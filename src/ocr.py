@@ -1,6 +1,7 @@
 import io
 from PIL import Image, UnidentifiedImageError
 import pytesseract
+import re
 
 def processImage(file, lang):
     try:
